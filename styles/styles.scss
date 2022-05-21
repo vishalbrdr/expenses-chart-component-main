@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
+// Primary
+$Soft-red: hsl(10, 79%, 65%);
+$Cyan: hsl(186, 34%, 60%);
+
+// Neutral
+$Dark-brown: hsl(25, 47%, 15%);
+$Medium-brown: hsl(28, 10%, 53%);
+$Cream: hsl(27, 66%, 92%);
+$Very-pale-orange: hsl(33, 100%, 98%);
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+  @media screen and (max-width: 500px) {
+    font-size: 50%;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 45%;
+  }
+}
+body {
+  min-height: 100vh;
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  background-color: $Cream;
+  font-family: "DM Sans", sans-serif;
+}
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 50rem;
+  margin-top: 5rem;
+}
+.main {
+  &__header {
+    display: flex;
+    background-color: $Soft-red;
+    justify-content: space-between;
+    padding: 2rem 2.7rem;
+    align-items: center;
+    border-radius: 2rem;
+    animation: fadein 800ms ease-in-out;
+
+    .balance {
+      display: grid;
+      &-text {
+        color: $Cream;
+      }
+      &-amount {
+        font-size: 3rem;
+        color: $Very-pale-orange;
+      }
+    }
+  }
+
+  &__body {
+    background-color: $Very-pale-orange;
+    padding: 2rem 2.7rem;
+    border-radius: 2rem;
+    animation: fadein 800ms ease-in-out;
+    .heading {
+      font-size: 3rem;
+      color: $Dark-brown;
+    }
+  }
+  &__footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    .total {
+      display: grid;
+      &-text {
+        color: $Medium-brown;
+      }
+      &-amount {
+        font-size: 4rem;
+        font-weight: 700;
+        color: $Dark-brown;
+      }
+    }
+    .last-month {
+      display: grid;
+      align-self: end;
+      &-percentage {
+        align-self: end;
+        justify-self: end;
+        font-weight: 700;
+        color: $Dark-brown;
+      }
+      &-text {
+        color: $Medium-brown;
+      }
+    }
+  }
+}
+.graph {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0.1rem -0.1rem $Dark-brown;
+  .bar {
+    width: 5rem;
+    height: attr(data-amount) px;
+    background-color: $Soft-red;
+    border-radius: 0.5rem;
+    align-self: flex-end;
+    position: relative;
+    margin-bottom: 5rem;
+    transition: filter 300ms ease;
+    cursor: pointer;
+    animation: rise 800ms ease-in-out;
+    transform-origin: bottom;
+    &:nth-child(4) {
+      background-color: $Cyan;
+    }
+    &::after {
+      content: attr(data-day);
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 125%);
+      color: $Medium-brown;
+    }
+    &::before {
+      content: attr(data-amount);
+      position: absolute;
+      background-color: $Dark-brown;
+      color: $Very-pale-orange;
+      width: 125%;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 1.5rem;
+      border-radius: 0.4rem;
+      transform: translate(-50%, -80%);
+      transition: all 300ms ease-in-out;
+      left: 50%;
+      opacity: 0;
+      pointer-events: none;
+    }
+    &:hover {
+      filter: opacity(0.75);
+      &::before {
+        transform: translate(-50%, -120%);
+        opacity: 1;
+      }
+    }
+  }
+}
+@keyframes rise {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(100%);
+  }
+}
+@keyframes fadein {
+  0%{
+    transform: translateY(10%);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}

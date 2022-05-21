@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Expenses chart component</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+        margin-block: 5rem;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="main__header">
+          <div class="balance">
+            <span class="balance-text">My balance</span>
+            <span class="balance-amount">$921.48</span>
+          </div>
+          <figure class="logo"><img src="./images/logo.svg" alt="" /></figure>
+        </div>
+        <div class="main__body">
+          <h1 class="heading">Spending - Last 7 days</h1>
+          <div class="graph">
+            <template id="bar">
+              <div class="bar" data-day data-amount></div>
+            </template>
+          </div>
+          <div class="main__footer">
+            <div class="total">
+              <span class="total-text">Total this month</span>
+              <span class="total-amount">$478.33</span>
+            </div>
+            <div class="last-month">
+              <span class="last-month-percentage">+2.4%</span>
+              <span class="last-month-text">from last month</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://www.github.com/vishalbrdr">Vishal Biradar</a>.
+    </div>
+  </body>
+</html>
